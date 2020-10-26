@@ -1,4 +1,5 @@
 require 'webrick'
+require 'json'
 require_relative 'config/HttpHandler'
 
 server = WEBrick::HTTPServer.new(:Port => 8000)
