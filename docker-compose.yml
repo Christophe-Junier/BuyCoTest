@@ -1,0 +1,18 @@
+version: '3'
+services:
+  database:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - database.env # configure postgres
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+  webrick:
+    build: .
+    volumes:
+      - .:/buycotest
+    ports:
+      - 8000:8000/tcp
+    depends_on:
+      - database
+volumes:
+  database-data:
