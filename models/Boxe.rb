@@ -1,4 +1,6 @@
 class Boxe
+  require_relative '../modules/Validation'
+
   def initialize(boxe_information, response)
     check_integrity(boxe_information, response)
     puts 'lol'
