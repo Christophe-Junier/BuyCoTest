@@ -1,9 +1,11 @@
 require 'webrick'
 require 'json'
-require_relative 'config/HttpHandler'
+require_relative 'controllers/HttpController'
+require_relative 'models/Boxe'
+require_relative 'modules/Validation'
 
 server = WEBrick::HTTPServer.new(:Port => 8000)
-server.mount "/", HttpHandler
+server.mount "/", HttpController
 
 # Enable shutdown on C-c
 trap("INT"){ server.shutdown }
