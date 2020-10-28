@@ -1,3 +1,5 @@
+# Module that handle the connection of the database
+
 module Db_connector
   require 'pg'
 

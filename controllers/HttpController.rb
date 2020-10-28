@@ -1,10 +1,12 @@
-class HttpController < WEBrick::HTTPServlet::AbstractServlet
+# Controller that handle post and get request made on the app
 
+class HttpController < WEBrick::HTTPServlet::AbstractServlet
   def do_GET(request, response)
     throw_not_found(response)
   end
 
   def do_POST(request, response)
+    # Continue if header is set to application/json, and if the json is parsable
     if request.content_type == 'application/json' && valid_json?(request.body)
       Boxe.new(@boxe_information, response)
     else

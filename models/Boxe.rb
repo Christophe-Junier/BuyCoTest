@@ -1,7 +1,9 @@
 class Boxe
+  # include modules
   include Validation
   include Db_connector
 
+  # used to initialize class instance attributes
   attr_accessor :id
   attr_accessor :height
   attr_accessor :width
@@ -16,6 +18,7 @@ class Boxe
   attr_accessor :postal_code
   attr_accessor :locked
 
+  # raise error if the json datas are not complete, then assign variables, then create boxe
   def initialize(boxe_information, response)
     return throw_unprocessable_entity(response) unless check_integrity(boxe_information)
     assign_boxe_information(boxe_information)
@@ -24,6 +27,7 @@ class Boxe
 
   private
 
+  # Checking integrity of all data using the Validation module.
   def check_integrity(boxe_information)
     return false unless are_numbers?( boxe_information['id'],
                                       boxe_information['height'],
@@ -81,6 +85,7 @@ class Boxe
     self.locked      = boxe_information['locked']
   end
 
+  # Connection to Db using Dbconnector module and registering boxe
   def create_boxe
     return false unless db_connect
     return false unless add_box_to_db
