@@ -12,7 +12,7 @@ CREATE TABLE boxes(
 );
 
  CREATE TABLE volumes(
-        boxe_id integer NOT NULL,
+        boxe_id integer NOT NULL PRIMARY KEY,
         volume  decimal NOT NULL
  );
 
