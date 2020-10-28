@@ -14,7 +14,7 @@ class Boxe
                                       boxe_information['width'],
                                       boxe_information['depth'] )
 
-    return false unless boxe_information['origin'] != nil
+    return false unless boxe_information["origin"] != nil
 
     return false unless are_strings?( boxe_information['type'],
                                       boxe_information['contents'],
@@ -26,8 +26,9 @@ class Boxe
                                       boxe_information['origin']['postal_code'] )
 
     return false unless is_a_boolean?(boxe_information['locked'])
-    return false unless is_date_ISO3166?(boxe_information['country'])
+    return false unless is_date_ISO3166?(boxe_information['origin']['country'])
     return false unless is_in_array?(boxe_information['type'], ['cardboard', 'wood', 'metal'])
+    return true
   end
 
   def throw_unprocessable_entity(response)

@@ -20,7 +20,7 @@ module Validation
 
   def are_numbers?(*vars)
     vars.each do |var|
-      return false if ( var.class != Integer || var.class != Float)
+      return false if ( var.class != Integer && var.class != Float)
     end
     return true
   end
@@ -34,6 +34,6 @@ module Validation
   end
 
   def is_containing_only_letters?(var)
-    var.match("[a-zA-Z]+") ? true : false
+    var.match("[a-zA-Z]{3}") ? true : false
   end
 end
