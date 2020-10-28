@@ -21,6 +21,7 @@ Test in order to integrate BuyCo
 ```
 
 ## How to use the app
+
 In order to communicate with the application, you must be able to do some post request at any endpoint of the application.
 
 Some applications that do the job:
@@ -30,7 +31,7 @@ Some applications that do the job:
 
 You can also use 'curl', an unix package that can do request.
 
-
+The application will run locally on localhost:8000
 
 ## API documentation
 
@@ -46,8 +47,9 @@ Header-name: Content-type -> Header value: application/json
 
 ### BODY
 
-only json datas are accepted, with the following sets of datas:
+Only json datas are accepted, with the following set of 'data' => 'value' :
 
+```json
 {
   "id": number,
   "type": (cardboard|wood|metal),
@@ -65,6 +67,7 @@ only json datas are accepted, with the following sets of datas:
     "country": ISO_3166_alpha3
   }
 }
+```
 
 ### Exemple
 
