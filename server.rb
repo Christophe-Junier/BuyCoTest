@@ -1,6 +1,8 @@
 require 'webrick'
 require 'json'
+
 require_relative 'modules/Validation'
+require_relative 'modules/Db_connector'
 require_relative 'controllers/HttpController'
 require_relative 'models/Boxe'
 
