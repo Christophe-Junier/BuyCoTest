@@ -76,3 +76,19 @@ exemple with curl:
 ```bash
 curl -d '{"id": 2, "type": "metal", "locked": true, "height": 1, "width": 1, "depth":2.25, "contents":"some fishs", "origin": {"line1": "27 rue du general foy", "line2": "place de la republique", "city": "Saint Etienne", "state": "france", "postal_code": "42000", "country": "fra"}}' -H "Content-Type: application/json" -X POST http://localhost:8000
 ```
+
+### Tips
+
+connecting to the database:
+
+```bash
+docker-compose exec database psql -U admin
+```
+
+reseting database:
+
+```bash
+docker-compose down
+docker volume rm buycotest_database-data
+docker-compose up
+```
