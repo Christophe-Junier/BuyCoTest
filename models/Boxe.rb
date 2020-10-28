@@ -76,15 +76,32 @@ class Boxe
     self.line2       = boxe_information['origin']['line2']
     self.city        = boxe_information['origin']['city']
     self.state       = boxe_information['origin']['state']
-    self.country     = boxe_information['origin']['country']
+    self.country     = boxe_information['origin']['country'].upcase
     self.postal_code = boxe_information['origin']['postal_code']
     self.locked      = boxe_information['locked']
   end
 
   def create_boxe
     return false unless db_connect
-    puts @con
+    return false unless add_box_to_db
     db_disconnect
+    return true
+  end
+
+  def add_box_to_db
+    begin
+      @con.exec(
+        "INSERT INTO boxes (id, type, locked, height, width, depth, contents)
+         VALUES (#{self.id}, '#{self.type}', #{self.locked}, #{self.height}, #{self.width}, #{self.depth}, '#{self.contents}')"
+      )
+      @con.exec(
+        "INSERT INTO origines (boxe_id, line1, line2, city, state, postal_code, country)
+         VALUES (#{self.id}, '#{self.line1}', '#{self.line2}', '#{self.city}', '#{self.state}', '#{self.postal_code}', '#{self.country}')"
+      )
+    rescue PG::Error => e
+      puts e.message
+      return false
+    end
     return true
   end
 end
