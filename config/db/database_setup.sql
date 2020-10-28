@@ -12,7 +12,7 @@ CREATE TABLE boxes(
 );
 
  CREATE TABLE volumes(
-        boxe_id integer references boxes(id),
+        boxe_id integer NOT NULL,
         volume  decimal NOT NULL
  );
 

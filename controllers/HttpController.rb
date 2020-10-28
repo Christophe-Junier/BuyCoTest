@@ -8,7 +8,10 @@ class HttpController < WEBrick::HTTPServlet::AbstractServlet
   def do_POST(request, response)
     # Continue if header is set to application/json, and if the json is parsable
     if request.content_type == 'application/json' && valid_json?(request.body)
-      Boxe.new(@boxe_information, response)
+      threads = []
+      threads << Thread.new { Boxe.new(@boxe_information, response) }
+      threads << Thread.new { Volume.new(@boxe_information, response) }
+      threads.each { |thread| thread.join }
     else
       throw_unprocessable_entity(response)
     end

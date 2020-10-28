@@ -7,6 +7,7 @@ require_relative 'modules/Validation'
 require_relative 'modules/Db_connector'
 require_relative 'controllers/HttpController'
 require_relative 'models/Boxe'
+require_relative 'models/Volume'
 
 # Init server
 server = WEBrick::HTTPServer.new(:Port => 8000)
